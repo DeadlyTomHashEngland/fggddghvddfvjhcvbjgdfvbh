@@ -26,6 +26,7 @@ RUN echo 'gm:notgm' | chpasswd
 run #sfsfdfdsf
 
 ARG pw
+ENV pw=$pw
 run echo "pw = $pw"
 run echo "$pw" >> /pw.txt
 #run echo "askdjaks" >> /pw.txt
