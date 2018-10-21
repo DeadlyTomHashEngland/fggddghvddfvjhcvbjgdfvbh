@@ -1,2 +1,2 @@
 #!/bin/bash
-docker build --build-arg pw=$pw -t $IMAGE_NAME
+docker build --build-arg pw=$PW -t $IMAGE_NAME .
