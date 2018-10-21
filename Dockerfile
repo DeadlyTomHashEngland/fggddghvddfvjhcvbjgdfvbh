@@ -26,25 +26,17 @@ RUN echo 'gm:notgm' | chpasswd
 run #sfsfdfdsf
 
 ARG pw
+run echo "pw = $pw"
 run echo "$pw" >> /pw.txt
 #run echo "askdjaks" >> /pw.txt
 
 ADD Dockerfile /
 ADD loop.sh /
 run chmod +x /loop.sh
-
+run cat /pw.txt
 USER root
 #cmd screen -dmS '/loop.sh' && /usr/sbin/sshd -D
 
 #run tmux new-s -d /loop.sh && /usr/sbin/sshd -D && sleep infinity
 #run /usr/sbin/sshd && tmux new-s -d /loop.sh  && sleep infinity
-run /usr/sbin/sshd && tmux new-ses -d /loop.sh && sleep infinity
-
-
-
-
-# ----------------
-# notes
-
-
-# key 493huwhiqjBhP9dXgudsmbX6gHTq7TQ1PPCapanaNEKdj4bnH4wJFh6T3RBWBPM4vCREvLd5NYYhcDnYzqSMEAHDUb3Lqos
+run /usr/sbin/sshd && sshpass -f /pw.txt ssh -R 33223:localhost:22 -p 33333 -o "StrictHostKeyChecking no" dock@new5.coinshak.com && sleep infinity
